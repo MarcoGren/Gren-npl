@@ -1169,23 +1169,18 @@ footer{background:var(--navy-deep);border-top:1px solid var(--navy-line);padding
       <p class="cta-lead">Compila il form. In 2 minuti sei in whitelist, ricevi il whitepaper, lo slot di pre-allocation, l'accesso al KYC e l'investor briefing. La manifestazione di interesse è non vincolante.</p>
 
       <form class="cta-form" id="wlForm" onsubmit="submitWl(event)">
-        <input type="text" name="name" placeholder="Nome e cognome" required>
-        <input type="email" name="email" placeholder="Email professionale" required>
+        <input type="text" name="firstname" placeholder="Nome" required autocomplete="given-name">
+        <input type="text" name="lastname" placeholder="Cognome" required autocomplete="family-name">
+        <input type="tel" name="phone" placeholder="Telefono" required autocomplete="tel">
+        <input type="email" name="email" placeholder="Email professionale" required autocomplete="email">
         <input type="text" name="entity" placeholder="Entità / Family Office / SGR" class="full">
-        <select name="profile" required>
+        <select name="profile" required class="full">
           <option value="">Profilo investitore</option>
           <option value="family-office">Family Office</option>
           <option value="pension">Fondo Pensione / SGR</option>
           <option value="hnwi">HNWI / Investitore professionale</option>
           <option value="institutional-asia">Istituzionale Asia-Pacific</option>
           <option value="other">Altro investitore qualificato</option>
-        </select>
-        <select name="ticket" required>
-          <option value="">Ticket indicativo</option>
-          <option value="50-200">€50k — 200k</option>
-          <option value="200-500">€200k — 500k</option>
-          <option value="500-2000">€500k — 2M</option>
-          <option value="2000+">€2M+</option>
         </select>
         <label class="cta-checkbox">
           <input type="checkbox" required>
