@@ -87,6 +87,11 @@ input,select,textarea{font-family:inherit;font-size:inherit}
 .top-bar-inner{max-width:var(--container);margin:0 auto;padding:0 32px;display:flex;justify-content:space-between;align-items:center;gap:20px}
 .top-bar .dot{width:6px;height:6px;border-radius:50%;background:var(--gold);display:inline-block;margin-right:10px;vertical-align:middle;box-shadow:0 0 10px var(--gold)}
 .top-bar .right{color:var(--gold);font-weight:500}
+.top-bar .short-msg{display:none}
+@media(max-width:540px){
+  .top-bar .full-msg{display:none}
+  .top-bar .short-msg{display:inline}
+}
 @media(max-width:720px){.top-bar .right{display:none}}
 
 /* NAV */
@@ -564,6 +569,246 @@ footer{background:var(--navy-deep);border-top:1px solid var(--navy-line);padding
 /* Reveal */
 .reveal{opacity:0;transform:translateY(24px);transition:opacity 0.8s ease,transform 0.8s ease}
 .reveal.in{opacity:1;transform:translateY(0)}
+/* ===== MOBILE RESPONSIVE FIXES ===== */
+@media(max-width:540px){
+  /* Tighter horizontal breathing room on phones */
+  .container,
+  .container-narrow,
+  .hero-inner,
+  .nav-inner,
+  .top-bar-inner,
+  .trust-inner,
+  .foot-top,
+  .foot-disclaim,
+  .foot-bottom,
+  .ps-block{
+    padding-left:20px;padding-right:20px
+  }
+
+  /* Shorter section padding */
+  .sec-pad{padding:64px 0}
+  .hero{padding:48px 0 56px}
+
+  /* Hero — stack countdown beneath, tighter */
+  .hero h1{font-size:clamp(28px,8vw,42px);line-height:1.05;margin-bottom:24px}
+  .hero-sub{font-size:14px;line-height:1.55;margin-bottom:32px}
+  .hero-pre{font-size:9.5px;letter-spacing:0.2em;padding:7px 12px;margin-bottom:24px}
+  .hero-grid{margin-top:32px;gap:32px}
+  .hero-cta-group{flex-direction:column}
+  .hero-cta-group .btn{width:100%}
+
+  /* Countdown — tighter cells */
+  .countdown{padding:24px 22px}
+  .countdown-num{font-size:30px}
+  .countdown-grid{gap:8px}
+  .countdown-cell{padding:0}
+  .countdown-unit{font-size:8.5px;letter-spacing:0.18em}
+  .countdown-foot{font-size:10.5px;flex-direction:column;align-items:flex-start;gap:6px}
+
+  /* Top bar — only main message, hide right side already (done by existing 720px rule) */
+  .top-bar{padding:8px 0;font-size:9px;letter-spacing:0.12em}
+  .top-bar-inner{justify-content:center}
+  .top-bar .dot{width:5px;height:5px;margin-right:8px}
+
+  /* Nav */
+  .nav-inner{padding:14px 20px}
+  .nav-logo{height:30px}
+  .nav-logo .div{height:22px}
+  .nav-logo .product{font-size:11px;letter-spacing:0.22em}
+  .nav-cta{padding:8px 14px;font-size:10px;letter-spacing:0.12em}
+
+  /* Trust strip — wrap better */
+  .trust{padding:24px 0}
+  .trust-inner{gap:18px;flex-direction:column;align-items:flex-start}
+  .trust-label{font-size:9.5px;letter-spacing:0.22em}
+  .trust-logos{gap:18px 24px;font-size:13px}
+
+  /* Section eyebrows + titles */
+  .sec-eyebrow{font-size:10px;letter-spacing:0.22em;margin-bottom:20px;gap:10px}
+  .sec-eyebrow::before{width:24px}
+  .sec-title{font-size:clamp(24px,7vw,32px);margin-bottom:20px;line-height:1.15}
+  .sec-lead{font-size:14px;line-height:1.65}
+  .sec-lead.lg{font-size:15px}
+
+  /* Problem section — big stat */
+  .problem-stat{font-size:64px;line-height:0.9}
+  .problem-grid{gap:32px}
+  .problem-text p{font-size:14.5px;line-height:1.7;margin-bottom:18px}
+  .problem-stat-label{font-size:11px;letter-spacing:0.12em}
+
+  /* Drama */
+  .drama-grid{gap:14px;margin-top:36px}
+  .drama-card{padding:26px 22px}
+  .drama-card h3{font-size:18px;line-height:1.3}
+  .drama-card p{font-size:13.5px;line-height:1.6}
+  .drama-num{font-size:10px;letter-spacing:0.2em;margin-bottom:10px}
+
+  /* PUV */
+  .puv h2{font-size:clamp(26px,7vw,36px);margin-bottom:28px;line-height:1.1}
+  .puv-body{margin-top:36px;gap:28px}
+  .puv-body p{font-size:15px;line-height:1.65}
+  .puv-formula{padding:24px 22px}
+  .puv-formula-label{font-size:9.5px;letter-spacing:0.22em;margin-bottom:14px}
+  .puv-formula-row{padding:9px 0;gap:10px}
+  .puv-formula-key{font-size:12px}
+  .puv-formula-val{font-size:12px}
+
+  /* FBC table — stacked card on mobile */
+  .fbc-table{margin-top:36px}
+  .fbc-row{padding:22px 0;gap:10px}
+  .fbc-cell{padding:6px 0}
+  .fbc-feature{font-size:16px}
+  .fbc-feature small{font-size:10px;letter-spacing:0.16em}
+  .fbc-text{font-size:13.5px;line-height:1.55}
+  .fbc-mainai{font-size:13px;padding-left:10px}
+
+  /* Proof */
+  .proof-stats{margin:36px 0 48px}
+  .proof-stat{padding:24px 18px}
+  .proof-stat-num{font-size:38px;margin-bottom:10px}
+  .proof-stat-label{font-size:11px;letter-spacing:0.12em}
+  .proof-grid{gap:32px}
+  .proof-list li{padding:14px 0;gap:14px;grid-template-columns:90px 1fr}
+  .proof-role{font-size:9.5px;letter-spacing:0.14em}
+  .proof-name{font-size:14px}
+  .proof-name span{font-size:11.5px}
+
+  /* Testimonial */
+  .testi-banner{padding:24px 22px;margin-top:36px;flex-direction:column;align-items:flex-start;text-align:left;gap:18px}
+  .testi-banner-num{font-size:48px}
+  .testi-banner-text strong{font-size:15px}
+  .testi-banner-text span{font-size:12.5px}
+  .testi-banner .btn{width:100%}
+  .testi-grid{margin-top:28px;gap:14px}
+  .testi-card{padding:24px 22px}
+  .testi-card blockquote{font-size:14px;line-height:1.6;margin-bottom:18px}
+  .testi-card blockquote::before{font-size:36px}
+  .testi-disclaim{font-size:10.5px;margin-top:24px}
+
+  /* Offer */
+  .offer-grid{margin-top:36px;gap:32px}
+  .offer-list li{padding:16px 0;gap:14px;grid-template-columns:24px 1fr}
+  .offer-check{width:20px;height:20px}
+  .offer-text strong{font-size:14.5px}
+  .offer-text span{font-size:13px}
+  .offer-card{padding:28px 24px}
+  .offer-card h3{font-size:22px}
+  .offer-card-meta{gap:14px;padding:16px 0}
+  .offer-card-meta>div strong{font-size:13px}
+  .offer-card p{font-size:12.5px}
+
+  /* Guarantee — already 1col on mobile, just polish */
+  .guar-grid{gap:12px;margin-top:36px}
+  .guar-card{padding:24px 22px}
+  .guar-card h4{font-size:16px}
+  .guar-card p{font-size:12.5px}
+  .guar-num{font-size:10px;letter-spacing:0.2em;margin-bottom:14px}
+
+  /* Recap */
+  .recap-grid{margin-top:36px}
+  .recap-cell{padding:20px 0;grid-template-columns:90px 1fr;gap:14px}
+  .recap-cell:nth-child(2n){padding-left:0;padding-right:0;border-left:none}
+  .recap-key{font-size:10px;letter-spacing:0.18em}
+  .recap-val{font-size:14px;line-height:1.5}
+
+  /* Act / Agisci ora */
+  .act-countdown{margin:36px auto 28px;padding:32px 22px}
+  .act-countdown-label{font-size:10px;letter-spacing:0.22em;margin-bottom:18px}
+  .act-countdown-grid{gap:8px;margin-bottom:18px}
+  .act-cd-cell{padding:14px 4px}
+  .act-cd-num{font-size:32px}
+  .act-cd-unit{font-size:9px;letter-spacing:0.18em}
+  .act-countdown-foot{font-size:11.5px;line-height:1.5}
+  .act-bonus-grid{gap:14px;margin-top:28px}
+  .act-bonus{padding:24px 22px}
+  .act-bonus h4{font-size:16px}
+  .act-bonus p{font-size:12.5px}
+
+  /* P.S. */
+  .ps-tag{font-size:10px;letter-spacing:0.22em;margin-bottom:18px}
+  .ps-headline{font-size:clamp(24px,7vw,32px);margin-bottom:28px;line-height:1.15}
+  .ps-text{font-size:15px;line-height:1.7}
+  .ps-text p{margin-bottom:18px}
+  .ps-sign{margin-top:32px;padding-top:24px;flex-direction:column;align-items:flex-start;gap:14px}
+  .ps-sign-meta{text-align:left}
+
+  /* CTA */
+  .cta h2{font-size:clamp(24px,7vw,34px);margin-bottom:18px;line-height:1.15}
+  .cta-lead{font-size:14.5px;margin-bottom:32px}
+  .cta-form{gap:10px}
+  .cta-form input,.cta-form select{padding:14px 16px;font-size:14px}
+  .cta-checkbox{font-size:11.5px;line-height:1.5}
+  .cta-submit{padding:16px;font-size:11.5px;letter-spacing:0.14em}
+  .cta-success{padding:20px;font-size:14px}
+  .cta-fineprint{font-size:10.5px;margin-top:18px}
+
+  /* Footer */
+  footer{padding:48px 0 32px}
+  .foot-top{gap:28px;margin-bottom:40px}
+  .foot-brand img{height:40px;margin-bottom:18px}
+  .foot-brand-text{font-size:12.5px;line-height:1.55}
+  .foot-col h5{font-size:10px;letter-spacing:0.18em;margin-bottom:12px}
+  .foot-col li{margin-bottom:8px}
+  .foot-col a{font-size:12.5px}
+  .foot-disclaim{padding:24px 20px 0}
+  .foot-disclaim h6{font-size:10px;letter-spacing:0.2em}
+  .foot-disclaim p{font-size:11px;line-height:1.65;margin-bottom:12px}
+  .foot-entities{gap:18px;margin:24px 0}
+  .foot-entity{font-size:10.5px;line-height:1.55}
+  .foot-entity strong{font-size:11px}
+  .foot-bottom{padding:18px 20px 0;font-size:10px;flex-direction:column;align-items:flex-start;gap:14px}
+
+  /* Buttons globally a touch smaller */
+  .btn{padding:12px 22px;font-size:11.5px;letter-spacing:0.14em}
+
+  /* Cookie banner — buttons stack on very narrow */
+  .cookie-actions{flex-direction:column;gap:6px}
+  .cookie-btn{flex:none;width:100%;padding:12px 14px}
+
+  /* Gate (AIFMD modal) */
+  .gate-card{padding:32px 24px}
+  .gate h2{font-size:22px}
+  .gate p{font-size:13px}
+  .gate li{font-size:12.5px}
+  .gate-actions{flex-direction:column}
+  .gate-actions .btn{width:100%}
+
+  /* Exit modal */
+  .exit-card{padding:32px 24px 26px}
+  .exit-eyebrow{font-size:9.5px;letter-spacing:0.22em;margin-bottom:14px}
+  .exit-title{font-size:clamp(22px,6vw,28px);line-height:1.2;margin-bottom:14px}
+  .exit-text{font-size:13.5px;line-height:1.6;margin-bottom:22px}
+  .exit-form input{padding:14px 16px;font-size:13.5px}
+  .exit-submit{padding:16px;font-size:11.5px;letter-spacing:0.14em}
+  .exit-fine{font-size:10.5px}
+  .exit-close{width:30px;height:30px;font-size:18px;top:12px;right:12px}
+
+  /* FAB smaller already at 540px — fine-tune */
+  .fab{bottom:14px;right:14px;gap:10px}
+  .fab-btn{width:48px;height:48px}
+}
+
+/* Tablet adjustments — between 540 and 768 */
+@media(min-width:541px) and (max-width:768px){
+  .sec-title{font-size:clamp(28px,4.5vw,40px)}
+  .hero h1{font-size:clamp(36px,6.5vw,56px)}
+  .puv h2{font-size:clamp(32px,5.5vw,48px)}
+  .container,.container-narrow,.hero-inner{padding-left:24px;padding-right:24px}
+}
+
+/* Very small phones (<360px iPhone SE 1st gen, old Androids) */
+@media(max-width:360px){
+  .container,.container-narrow,.hero-inner,.nav-inner,.top-bar-inner,.trust-inner{padding-left:16px;padding-right:16px}
+  .hero h1{font-size:26px}
+  .sec-title{font-size:22px}
+  .countdown-num{font-size:26px}
+  .problem-stat{font-size:54px}
+  .nav-logo{height:26px}
+  .nav-logo .product{display:none}
+  .nav-logo .div{display:none}
+  .top-bar{font-size:8.5px;letter-spacing:0.1em}
+}
+
 </style>
 </head>
 <body>
@@ -655,7 +900,7 @@ footer{background:var(--navy-deep);border-top:1px solid var(--navy-line);padding
 <!-- ====== TOP BAR ====== -->
 <div class="top-bar">
   <div class="top-bar-inner">
-    <div><span class="dot"></span>FOR PROFESSIONAL INVESTORS ONLY · PRE-MARKETING · NOT A PUBLIC OFFER</div>
+    <div><span class="dot"></span><span class="full-msg">FOR PROFESSIONAL INVESTORS ONLY · PRE-MARKETING · NOT A PUBLIC OFFER</span><span class="short-msg">PRO INVESTORS ONLY · PRE-MARKETING</span></div>
     <div class="right">RAIF · CSSF-AUTHORISED AIFM · ERC-3643</div>
   </div>
 </div>
