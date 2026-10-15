@@ -23,7 +23,7 @@
 html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;-webkit-text-size-adjust:100%}
 body{font-family:var(--font);background:var(--navy);color:var(--bone);font-weight:300;line-height:1.6;overflow-x:hidden}
 a{color:inherit;text-decoration:none}
-button,input,select{font-family:inherit;font-size:inherit}
+button,input,select,textarea{font-family:inherit;font-size:inherit}
 button{cursor:pointer;border:none;background:none;color:inherit}
 ::selection{background:var(--gold);color:var(--navy)}
 .container{max-width:var(--container);margin:0 auto;padding:0 28px}
@@ -212,6 +212,45 @@ select.input option{background:var(--navy-deep);color:var(--bone)}
 .gated-disclaimer{margin-top:36px;font-size:12px;color:var(--muted);line-height:1.7}
 .gated-disclaimer strong{color:var(--muted-strong);font-weight:500}
 
+
+/* CTA pulse */
+@keyframes pulse-gold{0%,100%{box-shadow:0 0 0 0 rgba(216,176,87,.55)}70%{box-shadow:0 0 0 14px rgba(216,176,87,0)}}
+.btn.pulse{animation:pulse-gold 2.2s ease-out infinite}
+@media(prefers-reduced-motion:reduce){.btn.pulse{animation:none}}
+textarea.input{min-height:96px;resize:vertical;line-height:1.5}
+
+/* Reserved overview */
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:40px}
+@media(max-width:900px){.kpis{grid-template-columns:repeat(2,1fr)}}
+.kpi{background:var(--navy-deep);border:1px solid var(--line);border-radius:var(--r-md);padding:24px 20px;text-align:left;transition:border-color .3s}
+.kpi:hover{border-color:var(--gold)}
+.kpi-n{font-size:clamp(34px,3.6vw,46px);font-weight:300;color:var(--gold);line-height:1;letter-spacing:-.03em;margin-bottom:10px}
+.kpi-l{font-size:12.5px;color:var(--muted-strong);line-height:1.45}
+.flow{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:12px;align-items:stretch;margin-top:16px}
+.flow-step{background:var(--navy-deep);border:1px solid var(--line);border-radius:var(--r-md);padding:22px 20px;display:flex;flex-direction:column;gap:8px}
+.flow-step .fn{font-size:10px;letter-spacing:.24em;color:var(--gold);font-weight:600}
+.flow-step h4{font-size:15.5px;font-weight:600;color:var(--bone);line-height:1.3}
+.flow-step p{font-size:13px;color:var(--muted-strong);line-height:1.55}
+.flow-arrow{display:flex;align-items:center;color:var(--gold);opacity:.8}
+.flow-arrow svg{width:22px;height:22px}
+@media(max-width:860px){
+  .flow{grid-template-columns:1fr}
+  .flow-arrow{justify-content:center;transform:rotate(90deg);height:22px}
+}
+.struct{margin-top:16px;border:1px solid var(--line);border-radius:var(--r-md);background:var(--navy-deep);display:grid;grid-template-columns:1fr 1fr;overflow:hidden}
+@media(max-width:700px){.struct{grid-template-columns:1fr}}
+.sr{display:flex;justify-content:space-between;gap:16px;padding:13px 20px;border-bottom:1px solid var(--line);font-size:13px}
+.struct .sr:nth-child(odd){border-right:1px solid var(--line)}
+@media(max-width:700px){.struct .sr:nth-child(odd){border-right:none}}
+.sr .k{color:var(--muted);letter-spacing:.06em;text-transform:uppercase;font-size:10.5px;font-weight:500;padding-top:2px;flex-shrink:0}
+.sr .v{color:var(--bone);font-weight:400;text-align:right;line-height:1.4}
+@media(max-width:540px){
+  .kpis{grid-template-columns:repeat(2,1fr);gap:10px;margin-top:28px}
+  .kpi{padding:18px 16px}.kpi-n{font-size:32px}
+  .flow-step{padding:18px 16px}
+  .sr{padding:12px 16px;font-size:12.5px}
+}
+
 /* Footer */
 footer{background:var(--navy-deep);border-top:1px solid var(--line);padding:56px 0 32px}
 .foot-top{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:36px;margin-bottom:40px}
@@ -244,8 +283,9 @@ footer{background:var(--navy-deep);border-top:1px solid var(--line);padding:56px
 .cookie p strong{color:var(--bone);font-weight:500}
 .cookie .links{font-size:12px;margin-bottom:16px;padding-bottom:16px;border-bottom:1px solid var(--line)}
 .cookie .links a{color:var(--gold);text-decoration:underline;text-underline-offset:3px;margin-right:14px}
-.cookie-actions{display:flex;gap:8px;flex-wrap:wrap}
-.cookie-btn{flex:1;min-width:0;padding:11px 12px;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:500;border:1px solid var(--line);border-radius:var(--r-sm);color:var(--muted-strong);background:transparent;transition:all .2s;white-space:nowrap}
+.cookie-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.cookie-btn{min-width:0;padding:12px 10px;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;font-weight:500;border:1px solid var(--line);border-radius:var(--r-sm);color:var(--muted-strong);background:transparent;transition:all .2s;line-height:1.3;text-align:center}
+.cookie-btn.primary{grid-column:1/-1}
 .cookie-btn:hover{border-color:var(--bone);color:var(--bone)}
 .cookie-btn.primary{background:var(--gold);color:var(--navy);border-color:var(--gold);box-shadow:0 0 0 4px rgba(216,176,87,.18)}
 .cookie-btn.primary:hover{background:transparent;color:var(--gold)}
@@ -267,7 +307,7 @@ footer{background:var(--navy-deep);border-top:1px solid var(--line);padding:56px
 .cookie-fab:hover{transform:scale(1.08)}
 @media(max-width:540px){
   .cookie{bottom:0;left:0;width:100%;max-width:100%;border-radius:var(--r-md) var(--r-md) 0 0;border-left:0;border-right:0;border-bottom:0;padding:20px 18px calc(18px + env(safe-area-inset-bottom))}
-  .cookie-actions{flex-direction:column}.cookie-btn{width:100%;padding:12px}
+  .cookie-actions{grid-template-columns:1fr}.cookie-btn{width:100%;padding:13px}
   .cookie-fab{bottom:14px;left:14px;width:40px;height:40px}
 }
 
@@ -325,7 +365,7 @@ footer{background:var(--navy-deep);border-top:1px solid var(--line);padding:56px
         <button type="button" id="langIt" onclick="setLang('it')">IT</button>
         <button type="button" id="langEn" onclick="setLang('en')">EN</button>
       </div>
-      <a href="#gate" class="btn" data-i18n="cta.talk">Parla con il team investitori</a>
+      <a href="#gate" class="btn pulse" data-i18n="cta.talk">Parla con il team investitori</a>
     </div>
   </div>
 </nav>
@@ -337,7 +377,7 @@ footer{background:var(--navy-deep);border-top:1px solid var(--line);padding:56px
     <h1 data-i18n="hero.h1">Crediti deteriorati: <strong>chi li compra,</strong> <em>e perché.</em></h1>
     <p class="hero-sub" data-i18n="hero.sub">Come funziona il mercato europeo degli NPL, spiegato in quattro passaggi.</p>
     <div class="hero-cta">
-      <a href="#gate" class="btn" data-i18n="cta.talk">Parla con il team investitori</a>
+      <a href="#gate" class="btn pulse" data-i18n="cta.talk">Parla con il team investitori</a>
       <a href="#note" class="btn btn-ghost" data-i18n="cta.note">Ricevi la market note</a>
     </div>
     <p class="hero-note" data-i18n="hero.note">Contenuto informativo. Capitale a rischio.</p>
@@ -486,21 +526,32 @@ footer{background:var(--navy-deep);border-top:1px solid var(--line);padding:56px
     <div class="mcbox" data-i18n="s5.mc">Questa è una comunicazione di marketing. Si prega di consultare il documento informativo (PPM) di GREN FUND SCSp SICAV-RAIF prima di prendere qualsiasi decisione finale di investimento.</div>
     <div class="eyebrow" data-i18n="s5.eyebrow">05 · Panoramica riservata</div>
     <h2 class="title" data-i18n="s5.title"><strong>GREN NPL.</strong> Private credit europeo <em>in un sub-fund lussemburghese.</em></h2>
-    <p class="lead" data-i18n="s5.lead">GREN NPL è il sub-fund di private credit di GREN FUND SCSp SICAV-RAIF. Politica di investimento: acquisto a sconto di portafogli di crediti in sofferenza e debiti al consumo non pagati, ceduti da banche e istituti di credito europei, composti da posizioni individuali di piccolo importo (indicativamente tra 1.000 e 15.000 euro). Il recupero è affidato a servicer autorizzati; i proventi sono distribuiti progressivamente durante il ciclo. Il sub-fund non utilizza leva finanziaria.</p>
+    <p class="lead" data-i18n="s5.lead">Sub-fund di GREN FUND SCSp SICAV-RAIF. Acquista a sconto crediti in sofferenza e debiti al consumo non pagati ceduti da banche europee, in posizioni di piccolo importo (1.000–15.000 euro). Recupero affidato a servicer autorizzati, proventi distribuiti durante il ciclo. Nessuna leva finanziaria.</p>
 
-    <div class="terms reveal">
-      <div class="term"><div class="k" data-i18n="t.vehicle">Veicolo</div><div class="v">GREN FUND SCSp SICAV-RAIF<small data-i18n="t.vehicle.s">Lussemburgo · vigilato CSSF</small></div></div>
-      <div class="term"><div class="k">Sub-fund</div><div class="v">GREN NPL<small data-i18n="t.sub.s">Ring-fenced, patrimonio segregato</small></div></div>
-      <div class="term"><div class="k">General Partner</div><div class="v">GREN WORLD MANAGEMENT S.à r.l.<small>RCS Luxembourg B304466</small></div></div>
-      <div class="term"><div class="k" data-i18n="t.aifm">GEFIA</div><div class="v">Vault AM S.à r.l.<small data-i18n="t.aifm.s">Autorizzato CSSF</small></div></div>
-      <div class="term"><div class="k" data-i18n="t.dep">Depositario</div><div class="v">Swissquote Bank Europe SA</div></div>
-      <div class="term"><div class="k" data-i18n="t.aud">Revisore</div><div class="v">Ernst &amp; Young</div></div>
-      <div class="term"><div class="k" data-i18n="t.inv">Investitori</div><div class="v" data-i18n="t.inv.v">Massimo 30<small>Professionali e well-informed</small></div></div>
-      <div class="term"><div class="k" data-i18n="t.min">Investimento minimo</div><div class="v" data-i18n="t.min.v">€ 200.000<small>Allocazioni inferiori: GREN Atelier, da € 100.000</small></div></div>
-      <div class="term"><div class="k" data-i18n="t.target">Raccolta target</div><div class="v" data-i18n="t.target.v">€ 30 milioni</div></div>
-      <div class="term"><div class="k" data-i18n="t.cycle">Ciclo di investimento</div><div class="v" data-i18n="t.cycle.v">Circa 18 mesi<small>Con reinvestimento degli incassi</small></div></div>
-      <div class="term"><div class="k" data-i18n="t.dist">Distribuzioni</div><div class="v" data-i18n="t.dist.v">Progressive<small>Durante il ciclo, non al termine</small></div></div>
-      <div class="term"><div class="k" data-i18n="t.fees">Commissioni e costi</div><div class="v" data-i18n="t.fees.v">Come da PPM<small>Incidono sul capitale investito e sul rendimento</small></div></div>
+    <div class="kpis reveal">
+      <div class="kpi"><div class="kpi-n">30</div><div class="kpi-l" data-i18n="k1">investitori al massimo, professionali e well-informed</div></div>
+      <div class="kpi"><div class="kpi-n">€200k</div><div class="kpi-l" data-i18n="k2">investimento minimo (sotto soglia: GREN Atelier da €100k)</div></div>
+      <div class="kpi"><div class="kpi-n">~18</div><div class="kpi-l" data-i18n="k3">mesi di ciclo, con reinvestimento degli incassi</div></div>
+      <div class="kpi"><div class="kpi-n">€30M</div><div class="kpi-l" data-i18n="k4">raccolta target del sub-fund</div></div>
+    </div>
+
+    <div class="flow reveal">
+      <div class="flow-step"><div class="fn">01</div><h4 data-i18n="f1h">Acquisto disciplinato</h4><p data-i18n="f1p">Portafogli selezionati e prezzati sul recupero minimo atteso con ATLAS, il motore proprietario di pricing.</p></div>
+      <div class="flow-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16m0 0-5-5m5 5-5 5"/></svg></div>
+      <div class="flow-step"><div class="fn">02</div><h4 data-i18n="f2h">Recupero monitorato</h4><p data-i18n="f2p">Servicer autorizzati Banca d'Italia; ogni posizione tracciata e instradata da ARGO, con reporting mensile.</p></div>
+      <div class="flow-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16m0 0-5-5m5 5-5 5"/></svg></div>
+      <div class="flow-step"><div class="fn">03</div><h4 data-i18n="f3h">Distribuzioni progressive</h4><p data-i18n="f3p">I proventi tornano agli investitori durante il ciclo, non al termine. NAV e conti verificati da revisore indipendente.</p></div>
+    </div>
+
+    <div class="struct reveal">
+      <div class="sr"><span class="k" data-i18n="st.vehicle">Veicolo</span><span class="v">GREN FUND SCSp SICAV-RAIF</span></div>
+      <div class="sr"><span class="k">Sub-fund</span><span class="v" data-i18n="st.sub.v">GREN NPL · ring-fenced</span></div>
+      <div class="sr"><span class="k">General Partner</span><span class="v">GREN WORLD MANAGEMENT S.à r.l.</span></div>
+      <div class="sr"><span class="k" data-i18n="st.aifm">GEFIA</span><span class="v" data-i18n="st.aifm.v">Vault AM S.à r.l. · autorizzato CSSF</span></div>
+      <div class="sr"><span class="k" data-i18n="st.dep">Depositario</span><span class="v">Swissquote Bank Europe SA</span></div>
+      <div class="sr"><span class="k" data-i18n="st.aud">Revisore</span><span class="v">Ernst &amp; Young</span></div>
+      <div class="sr"><span class="k" data-i18n="st.fees">Commissioni e costi</span><span class="v" data-i18n="st.fees.v">Come da PPM · incidono su capitale e rendimento</span></div>
+      <div class="sr"><span class="k" data-i18n="st.docs">Documentazione</span><span class="v" data-i18n="st.docs.v">PPM, LPA, Annex del sub-fund · su richiesta</span></div>
     </div>
 
     <div class="two reveal">
@@ -527,10 +578,12 @@ footer{background:var(--navy-deep);border-top:1px solid var(--line);padding:56px
     </div>
 
     <div class="form-card reveal" id="contact">
+      <div class="eyebrow" data-i18n="s5.form.eyebrow">Colloquio riservato</div>
       <h3 data-i18n="s5.form.h">Parla con il <strong>team investitori.</strong></h3>
-      <p data-i18n="s5.form.p">Il modulo avvia una conversazione, non una sottoscrizione. Dopo un primo colloquio riceverai la documentazione (PPM, LPA, Annex del sub-fund). La manifestazione di interesse non è vincolante.</p>
+      <p data-i18n="s5.form.p">Un colloquio diretto con chi segue il sub-fund: struttura, termini, documentazione, risposte alle tue domande. Nessuna sottoscrizione, nessun impegno.</p>
       <form class="lead-form" id="leadForm" onsubmit="submitLead(event)">
-        <input class="input" type="text" name="name" data-i18n-ph="ph.name" placeholder="Nome e cognome" required autocomplete="name">
+        <input class="input" type="text" name="firstname" data-i18n-ph="ph.first" placeholder="Nome" required autocomplete="given-name">
+        <input class="input" type="text" name="lastname" data-i18n-ph="ph.last" placeholder="Cognome" required autocomplete="family-name">
         <input class="input" type="email" name="email" data-i18n-ph="ph.email" placeholder="Email" required autocomplete="email">
         <input class="input" type="tel" name="phone" data-i18n-ph="ph.phone" placeholder="Telefono" required autocomplete="tel">
         <input class="input" type="text" name="country" data-i18n-ph="ph.country" placeholder="Paese di residenza" required autocomplete="country-name">
@@ -552,20 +605,20 @@ footer{background:var(--navy-deep);border-top:1px solid var(--line);padding:56px
           <option value="200k-1m" data-i18n="opt.a2">Tra € 200.000 e € 1.000.000</option>
           <option value="over-1m" data-i18n="opt.a3">Oltre € 1.000.000</option>
         </select>
-        <select class="input" name="interest" required>
-          <option value="" data-i18n="opt.interest">Interesse</option>
+        <select class="input full" name="interest">
+          <option value="" data-i18n="opt.interest">Interesse (facoltativo)</option>
           <option value="npl">GREN NPL</option>
           <option value="atelier">GREN Atelier</option>
           <option value="both" data-i18n="opt.both">Entrambi</option>
         </select>
+        <textarea class="input full" name="notes" data-i18n-ph="ph.notes" placeholder="Note aggiuntive (facoltativo)" rows="3"></textarea>
         <label class="check full"><input type="checkbox" required><span data-i18n="s5.form.consent">Acconsento a essere contattato da GREN WORLD MANAGEMENT S.à r.l. e al trattamento dei dati secondo la <a href="https://www.grenfinance.com/privacy-policy" target="_blank" rel="noopener">Privacy Policy</a>. Comprendo che si tratta di una manifestazione di interesse non vincolante.</span></label>
-        <button type="submit" class="btn full" data-i18n="s5.form.btn">Richiedi un colloquio</button>
+        <button type="submit" class="btn full pulse" data-i18n="cta.talk">Parla con il team investitori</button>
       </form>
       <div class="success" id="leadSuccess"></div>
-      <p class="fine" data-i18n="s5.form.fine">Richieste dirette: <a href="mailto:info@grenfinance.com">info@grenfinance.com</a> · Questioni legali: <a href="mailto:legal@grenfinance.com">legal@grenfinance.com</a></p>
     </div>
 
-    <p class="gated-disclaimer" data-i18n="s5.disc"><strong>Comunicazione di marketing. Esclusivamente per investitori professionali.</strong> GREN FUND SCSp SICAV-RAIF è un fondo di investimento alternativo riservato di diritto lussemburghese, gestito da Vault AM S.à r.l., GEFIA autorizzato dalla CSSF. General Partner: GREN WORLD MANAGEMENT S.à r.l. La commercializzazione è notificata ai sensi dell'art. 32 della Direttiva 2011/61/UE (AIFMD) in Belgio, Bulgaria, Estonia, Irlanda, Italia, Lussemburgo, Norvegia, Romania e Svezia. Le informazioni contenute in questa pagina non costituiscono offerta, sollecitazione, raccomandazione né consulenza in materia di investimenti, legale o fiscale. Qualsiasi decisione di investimento deve basarsi esclusivamente sulla documentazione costitutiva del fondo (LPA e PPM), che prevale su ogni altro materiale e contiene le informazioni complete sui rischi, sui costi e sulle condizioni di sottoscrizione. Gli investimenti in crediti deteriorati comportano rischi significativi, inclusa la possibile perdita totale del capitale investito. I rendimenti passati non sono indicativi di quelli futuri. Il trattamento fiscale dipende dalla situazione individuale dell'investitore e può variare nel tempo. Riservato e confidenziale. v4.1 · Ottobre 2026.</p>
+    <p class="gated-disclaimer" data-i18n="s5.disc"></p>
   </div>
 </section>
 
@@ -704,17 +757,18 @@ it: {
   's4.blocked':'Al momento le informazioni sul fondo non sono disponibili per investitori residenti nel paese indicato. Puoi <a href="#note">ricevere la market note</a> o scrivere a <a href="mailto:info@grenfinance.com">info@grenfinance.com</a>.',
   'opt.status':'Status di investitore','opt.pro':'Investitore professionale (MiFID II)','opt.wii':'Well-informed investor (legge RAIF 2016)','opt.inst':'Investitore istituzionale / controparte qualificata',
   'opt.country':'Paese di residenza','c.IT':'Italia','c.LU':'Lussemburgo','c.BE':'Belgio','c.BG':'Bulgaria','c.EE':'Estonia','c.IE':'Irlanda','c.NO':'Norvegia','c.RO':'Romania','c.SE':'Svezia','c.OTHER':'Altro paese',
+  's5.lead':'Sub-fund di GREN FUND SCSp SICAV-RAIF. Acquista a sconto crediti in sofferenza e debiti al consumo non pagati ceduti da banche europee, in posizioni di piccolo importo (1.000–15.000 euro). Recupero affidato a servicer autorizzati, proventi distribuiti durante il ciclo. Nessuna leva finanziaria.',
+  'k1':'investitori al massimo, professionali e well-informed','k2':'investimento minimo (sotto soglia: GREN Atelier da €100k)','k3':'mesi di ciclo, con reinvestimento degli incassi','k4':'raccolta target del sub-fund',
+  'f1h':'Acquisto disciplinato','f1p':'Portafogli selezionati e prezzati sul recupero minimo atteso con ATLAS, il motore proprietario di pricing.',
+  'f2h':'Recupero monitorato','f2p':"Servicer autorizzati Banca d'Italia; ogni posizione tracciata e instradata da ARGO, con reporting mensile.",
+  'f3h':'Distribuzioni progressive','f3p':'I proventi tornano agli investitori durante il ciclo, non al termine. NAV e conti verificati da revisore indipendente.',
+  'st.vehicle':'Veicolo','st.sub.v':'GREN NPL · ring-fenced','st.aifm':'GEFIA','st.aifm.v':'Vault AM S.à r.l. · autorizzato CSSF','st.dep':'Depositario','st.aud':'Revisore','st.fees':'Commissioni e costi','st.fees.v':'Come da PPM · incidono su capitale e rendimento','st.docs':'Documentazione','st.docs.v':'PPM, LPA, Annex del sub-fund · su richiesta',
+  's5.form.eyebrow':'Colloquio riservato',
+  's5.form.p':'Un colloquio diretto con chi segue il sub-fund: struttura, termini, documentazione, risposte alle tue domande. Nessuna sottoscrizione, nessun impegno.',
+  'ph.first':'Nome','ph.last':'Cognome','ph.notes':'Note aggiuntive (facoltativo)','opt.interest':'Interesse (facoltativo)',
   's5.mc':'Questa è una comunicazione di marketing. Si prega di consultare il documento informativo (PPM) di GREN FUND SCSp SICAV-RAIF prima di prendere qualsiasi decisione finale di investimento.',
   's5.eyebrow':'05 · Panoramica riservata',
   's5.title':'<strong>GREN NPL.</strong> Private credit europeo <em>in un sub-fund lussemburghese.</em>',
-  's5.lead':'GREN NPL è il sub-fund di private credit di GREN FUND SCSp SICAV-RAIF. Politica di investimento: acquisto a sconto di portafogli di crediti in sofferenza e debiti al consumo non pagati, ceduti da banche e istituti di credito europei, composti da posizioni individuali di piccolo importo (indicativamente tra 1.000 e 15.000 euro). Il recupero è affidato a servicer autorizzati; i proventi sono distribuiti progressivamente durante il ciclo. Il sub-fund non utilizza leva finanziaria.',
-  't.vehicle':'Veicolo','t.vehicle.s':'Lussemburgo · vigilato CSSF','t.sub.s':'Ring-fenced, patrimonio segregato','t.aifm':'GEFIA','t.aifm.s':'Autorizzato CSSF','t.dep':'Depositario','t.aud':'Revisore',
-  't.inv':'Investitori','t.inv.v':'Massimo 30<small>Professionali e well-informed</small>',
-  't.min':'Investimento minimo','t.min.v':'€ 200.000<small>Allocazioni inferiori: GREN Atelier, da € 100.000</small>',
-  't.target':'Raccolta target','t.target.v':'€ 30 milioni',
-  't.cycle':'Ciclo di investimento','t.cycle.v':'Circa 18 mesi<small>Con reinvestimento degli incassi</small>',
-  't.dist':'Distribuzioni','t.dist.v':'Progressive<small>Durante il ciclo, non al termine</small>',
-  't.fees':'Commissioni e costi','t.fees.v':'Come da PPM<small>Incidono sul capitale investito e sul rendimento</small>',
   's5.ben.h':'Caratteristiche',
   's5.ben1':'<strong>Rischio granulare:</strong> migliaia di posizioni di piccolo importo, debitori e aree diverse.',
   's5.ben2':'<strong>Decorrelazione:</strong> incassi legati al recupero, non ai mercati azionari e obbligazionari.',
@@ -727,16 +781,11 @@ it: {
   's5.risk3':'<strong>Operativo:</strong> dipendenza dalla qualità del servicer e dei processi di recupero.',
   's5.risk4':'<strong>Legale, normativo e fiscale:</strong> tempi dei procedimenti, evoluzione del quadro regolamentare; il trattamento fiscale dipende dalla situazione individuale e può cambiare.',
   's5.risk5':"<strong>Perdita del capitale:</strong> l'investitore può perdere integralmente il capitale investito. Informazioni complete sui rischi nel PPM.",
-  's5.form.h':'Parla con il <strong>team investitori.</strong>',
-  's5.form.p':'Il modulo avvia una conversazione, non una sottoscrizione. Dopo un primo colloquio riceverai la documentazione (PPM, LPA, Annex del sub-fund). La manifestazione di interesse non è vincolante.',
-  'ph.name':'Nome e cognome','ph.email':'Email','ph.phone':'Telefono','ph.country':'Paese di residenza',
+  's5.form.h':'Parla con il <strong>team investitori.</strong>','ph.email':'Email','ph.phone':'Telefono','ph.country':'Paese di residenza',
   'opt.type':'Tipologia di investitore','opt.wm':'Wealth manager / consulente','opt.institution':'Istituzione',
   'opt.status2':'Status di investitore (autocertificato)',
-  'opt.alloc':'Allocazione indicativa','opt.a1':'Inferiore a € 200.000','opt.a2':'Tra € 200.000 e € 1.000.000','opt.a3':'Oltre € 1.000.000',
-  'opt.interest':'Interesse','opt.both':'Entrambi',
+  'opt.alloc':'Allocazione indicativa','opt.a1':'Inferiore a € 200.000','opt.a2':'Tra € 200.000 e € 1.000.000','opt.a3':'Oltre € 1.000.000','opt.both':'Entrambi',
   's5.form.consent':'Acconsento a essere contattato da GREN WORLD MANAGEMENT S.à r.l. e al trattamento dei dati secondo la <a href="https://www.grenfinance.com/privacy-policy" target="_blank" rel="noopener">Privacy Policy</a>. Comprendo che si tratta di una manifestazione di interesse non vincolante.',
-  's5.form.btn':'Richiedi un colloquio',
-  's5.form.fine':'Richieste dirette: <a href="mailto:info@grenfinance.com">info@grenfinance.com</a> · Questioni legali: <a href="mailto:legal@grenfinance.com">legal@grenfinance.com</a>',
   's5.ok.rm':'<strong>Richiesta ricevuta.</strong>Un relationship manager ti contatta entro 24 ore lavorative per un primo colloquio e per concordare l\'invio della documentazione.',
   's5.ok.atelier':'<strong>Richiesta ricevuta.</strong>Per allocazioni inferiori a € 200.000 il team ti presenterà GREN Atelier, il sub-fund liquido multi-strategia con investimento minimo di € 100.000. Ti contattiamo a breve.',
   's5.disc':"<strong>Comunicazione di marketing. Esclusivamente per investitori professionali.</strong> GREN FUND SCSp SICAV-RAIF è un fondo di investimento alternativo riservato di diritto lussemburghese, gestito da Vault AM S.à r.l., GEFIA autorizzato dalla CSSF. General Partner: GREN WORLD MANAGEMENT S.à r.l. La commercializzazione è notificata ai sensi dell'art. 32 della Direttiva 2011/61/UE (AIFMD) in Belgio, Bulgaria, Estonia, Irlanda, Italia, Lussemburgo, Norvegia, Romania e Svezia. Le informazioni contenute in questa pagina non costituiscono offerta, sollecitazione, raccomandazione né consulenza in materia di investimenti, legale o fiscale. Qualsiasi decisione di investimento deve basarsi esclusivamente sulla documentazione costitutiva del fondo (LPA e PPM), che prevale su ogni altro materiale e contiene le informazioni complete sui rischi, sui costi e sulle condizioni di sottoscrizione. Gli investimenti in crediti deteriorati comportano rischi significativi, inclusa la possibile perdita totale del capitale investito. I rendimenti passati non sono indicativi di quelli futuri. Il trattamento fiscale dipende dalla situazione individuale dell'investitore e può variare nel tempo. Riservato e confidenziale. v4.1 · Ottobre 2026.",
@@ -807,17 +856,18 @@ en: {
   's4.blocked':'Fund information is currently not available to investors resident in the selected country. You can <a href="#note">get the market note</a> or write to <a href="mailto:info@grenfinance.com">info@grenfinance.com</a>.',
   'opt.status':'Investor status','opt.pro':'Professional investor (MiFID II)','opt.wii':'Well-informed investor (RAIF law 2016)','opt.inst':'Institutional investor / eligible counterparty',
   'opt.country':'Country of residence','c.IT':'Italy','c.LU':'Luxembourg','c.BE':'Belgium','c.BG':'Bulgaria','c.EE':'Estonia','c.IE':'Ireland','c.NO':'Norway','c.RO':'Romania','c.SE':'Sweden','c.OTHER':'Other country',
+  's5.lead':'Sub-fund of GREN FUND SCSp SICAV-RAIF. It buys at a discount non-performing loans and unpaid consumer debt sold by European banks, in small positions (€1,000 to €15,000). Recovery entrusted to authorised servicers, proceeds distributed during the cycle. No leverage.',
+  'k1':'investors at most, professional and well-informed','k2':'minimum investment (below threshold: GREN Atelier from €100k)','k3':'month cycle, with reinvestment of collections','k4':'target raise of the sub-fund',
+  'f1h':'Disciplined purchase','f1p':'Portfolios selected and priced on the minimum expected recovery with ATLAS, the proprietary pricing engine.',
+  'f2h':'Monitored recovery','f2p':'Bank of Italy authorised servicers; every position tracked and routed by ARGO, with monthly reporting.',
+  'f3h':'Progressive distributions','f3p':'Proceeds return to investors during the cycle, not at the end. NAV and accounts verified by an independent auditor.',
+  'st.vehicle':'Vehicle','st.sub.v':'GREN NPL · ring-fenced','st.aifm':'AIFM','st.aifm.v':'Vault AM S.à r.l. · CSSF authorised','st.dep':'Depositary','st.aud':'Auditor','st.fees':'Fees and costs','st.fees.v':'As per PPM · they reduce capital and return','st.docs':'Documentation','st.docs.v':'PPM, LPA, sub-fund Annex · on request',
+  's5.form.eyebrow':'Confidential call',
+  's5.form.p':'A direct conversation with the people behind the sub-fund: structure, terms, documentation, answers to your questions. No subscription, no commitment.',
+  'ph.first':'First name','ph.last':'Last name','ph.notes':'Additional notes (optional)','opt.interest':'Interest (optional)',
   's5.mc':'This is a marketing communication. Please refer to the Information document (PPM) of GREN FUND SCSp SICAV-RAIF before making any final investment decisions.',
   's5.eyebrow':'05 · Reserved overview',
   's5.title':'<strong>GREN NPL.</strong> European private credit <em>in a Luxembourg sub-fund.</em>',
-  's5.lead':'GREN NPL is the private credit sub-fund of GREN FUND SCSp SICAV-RAIF. Investment policy: purchase at a discount of portfolios of non-performing loans and unpaid consumer debt sold by European banks and credit institutions, made up of small individual positions (indicatively between €1,000 and €15,000). Recovery is entrusted to authorised servicers; proceeds are distributed progressively during the cycle. The sub-fund does not use leverage.',
-  't.vehicle':'Vehicle','t.vehicle.s':'Luxembourg · CSSF supervised','t.sub.s':'Ring-fenced, segregated assets','t.aifm':'AIFM','t.aifm.s':'CSSF authorised','t.dep':'Depositary','t.aud':'Auditor',
-  't.inv':'Investors','t.inv.v':'Maximum 30<small>Professional and well-informed</small>',
-  't.min':'Minimum investment','t.min.v':'€200,000<small>Smaller allocations: GREN Atelier, from €100,000</small>',
-  't.target':'Target raise','t.target.v':'€30 million',
-  't.cycle':'Investment cycle','t.cycle.v':'About 18 months<small>With reinvestment of collections</small>',
-  't.dist':'Distributions','t.dist.v':'Progressive<small>During the cycle, not at the end</small>',
-  't.fees':'Fees and costs','t.fees.v':'As per PPM<small>They reduce the invested amount and the return</small>',
   's5.ben.h':'Features',
   's5.ben1':'<strong>Granular risk:</strong> thousands of small positions across different borrowers and regions.',
   's5.ben2':'<strong>Low correlation:</strong> collections tied to recovery, not to equity and bond markets.',
@@ -830,16 +880,11 @@ en: {
   's5.risk3':'<strong>Operational:</strong> dependence on the quality of the servicer and of recovery processes.',
   's5.risk4':'<strong>Legal, regulatory and tax:</strong> court timelines, changes in the regulatory framework; tax treatment depends on individual circumstances and may change.',
   's5.risk5':'<strong>Loss of capital:</strong> investors may lose the entire amount invested. Complete risk information in the PPM.',
-  's5.form.h':'Talk to our <strong>investor team.</strong>',
-  's5.form.p':'The form starts a conversation, not a subscription. After an introductory call you will receive the documentation (PPM, LPA, sub-fund Annex). The expression of interest is non-binding.',
-  'ph.name':'Full name','ph.email':'Email','ph.phone':'Phone','ph.country':'Country of residence',
+  's5.form.h':'Talk to our <strong>investor team.</strong>','ph.email':'Email','ph.phone':'Phone','ph.country':'Country of residence',
   'opt.type':'Investor type','opt.wm':'Wealth manager / adviser','opt.institution':'Institution',
   'opt.status2':'Investor status (self-certified)',
-  'opt.alloc':'Indicative allocation','opt.a1':'Under €200,000','opt.a2':'€200,000 to €1,000,000','opt.a3':'Over €1,000,000',
-  'opt.interest':'Interest','opt.both':'Both',
+  'opt.alloc':'Indicative allocation','opt.a1':'Under €200,000','opt.a2':'€200,000 to €1,000,000','opt.a3':'Over €1,000,000','opt.both':'Both',
   's5.form.consent':'I consent to being contacted by GREN WORLD MANAGEMENT S.à r.l. and to the processing of my data in line with the <a href="https://www.grenfinance.com/privacy-policy" target="_blank" rel="noopener">Privacy Policy</a>. I understand this is a non-binding expression of interest.',
-  's5.form.btn':'Request a call',
-  's5.form.fine':'Direct enquiries: <a href="mailto:info@grenfinance.com">info@grenfinance.com</a> · Legal matters: <a href="mailto:legal@grenfinance.com">legal@grenfinance.com</a>',
   's5.ok.rm':'<strong>Request received.</strong>A relationship manager will contact you within 24 business hours for an introductory call and to arrange the documentation.',
   's5.ok.atelier':'<strong>Request received.</strong>For allocations under €200,000 the team will introduce GREN Atelier, the liquid multi-strategy sub-fund with a €100,000 minimum investment. We will be in touch shortly.',
   's5.disc':'<strong>Marketing communication. For professional investors only.</strong> GREN FUND SCSp SICAV-RAIF is a Luxembourg reserved alternative investment fund managed by Vault AM S.à r.l., an AIFM authorised by the CSSF. General Partner: GREN WORLD MANAGEMENT S.à r.l. Marketing is notified under Article 32 of Directive 2011/61/EU (AIFMD) in Belgium, Bulgaria, Estonia, Ireland, Italy, Luxembourg, Norway, Romania and Sweden. The information on this page does not constitute an offer, solicitation, recommendation or investment, legal or tax advice. Any investment decision must be based solely on the fund\'s constitutional documents (LPA and PPM), which prevail over any other material and contain complete information on risks, costs and subscription terms. Investments in non-performing loans carry significant risks, including the possible total loss of the capital invested. Past performance does not predict future returns. Tax treatment depends on the individual circumstances of each investor and may change over time. Reserved and confidential. v4.1 · October 2026.',
@@ -941,15 +986,15 @@ function submitGate(e){
 // Lead
 function submitLead(e){
   e.preventDefault(); const f=e.target, btn=f.querySelector('button[type="submit"]'), d=Object.fromEntries(new FormData(f).entries());
-  setLoading(btn,true,'s5.form.btn');
+  setLoading(btn,true,'cta.talk');
   let sc={}; try{ sc=JSON.parse(localStorage.getItem('gren_investor_selfcert')||'{}'); }catch(_){}
   const over=d.allocation!=='under-200k';
-  const p={to_email:EMAILJS_CONFIG.RECIPIENT_EMAIL,user_name:d.name,user_email:d.email,user_phone:d.phone,user_country:d.country,user_type:d.type,user_status:d.status,user_allocation:d.allocation,user_interest:d.interest,
+  const p={to_email:EMAILJS_CONFIG.RECIPIENT_EMAIL,user_firstname:d.firstname,user_lastname:d.lastname,user_name:(d.firstname+' '+d.lastname).trim(),user_email:d.email,user_phone:d.phone,user_country:d.country,user_type:d.type,user_status:d.status,user_allocation:d.allocation,user_interest:d.interest||'-',user_notes:d.notes||'-',
     lead_route:over?'Qualified · Relationship Manager within 24h':'Below threshold · propose GREN Atelier (min €100,000)',
     selfcert_status:sc.status||'',selfcert_country:sc.country||'',selfcert_at:sc.ts||'',lang:LANG,submitted_at:now(),source:PAGE_SOURCE+' · investor area'};
   sendMail(EMAILJS_CONFIG.TEMPLATE_NOTIFY,p).then(()=>sendMail(EMAILJS_CONFIG.TEMPLATE_AUTOREPLY,p))
   .then(()=>{ f.style.display='none'; const s=document.getElementById('leadSuccess'); s.innerHTML=t(over?'s5.ok.rm':'s5.ok.atelier'); s.classList.add('visible'); s.scrollIntoView({behavior:'smooth',block:'center'}); })
-  .catch(err=>{ console.error(err); setLoading(btn,false,'s5.form.btn'); alert(t('err.send')); });
+  .catch(err=>{ console.error(err); setLoading(btn,false,'cta.talk'); alert(t('err.send')); });
 }
 
 // Reveal
